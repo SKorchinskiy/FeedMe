@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { View, StyleSheet, FlatList } from "react-native";
+import { FlatList } from "react-native";
 import Searchbar from "./components/searchbar.component";
-import RestaurantInfo from "./components/restaurant-info.component";
+import RestaurantInfoCard from "./components/restaurant-info-card.component";
+import styled from "styled-components";
 
 const dummyRestaurantsData = [
   {
@@ -36,35 +37,36 @@ const dummyRestaurantsData = [
   },
 ];
 
+const RestaurantListContainer = styled.View`
+  display: flex;
+  flex: 1;
+`;
+
+const RestaurantDataList = styled.View`
+  display: flex;
+  flex: 1;
+  padding: ${(props) => props.theme.space[2]};
+`;
+
 export default function RestaurantList() {
   const [searchQuery, setSearchQuery] = useState("");
 
   const onSearchQueryChange = (searchInput) => setSearchQuery(searchInput);
 
   return (
-    <View style={styles.restaurantListContainer}>
+    <RestaurantListContainer>
       <Searchbar
         searchQuery={searchQuery}
         onSearchQueryChange={onSearchQueryChange}
       />
-      <View style={styles.restaurantList}>
+      <RestaurantDataList>
         <FlatList
           data={dummyRestaurantsData.filter((restaurant) =>
             restaurant.restaurant_name.includes(searchQuery)
           )}
-          renderItem={({ item }) => <RestaurantInfo restaurant={item} />}
+          renderItem={({ item }) => <RestaurantInfoCard restaurant={item} />}
         />
-      </View>
-    </View>
+      </RestaurantDataList>
+    </RestaurantListContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  restaurantListContainer: {
-    flex: 1,
-  },
-  restaurantList: {
-    flex: 1,
-    padding: 8,
-  },
-});
