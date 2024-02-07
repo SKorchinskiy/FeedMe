@@ -1,6 +1,6 @@
 import React from "react";
 import { SafeAreaView, StyleSheet, Platform, StatusBar } from "react-native";
-import RestaurantList from "../restaurant-list.component";
+import RestaurantList from "../components/restaurant-list/restaurant-list.component";
 
 export default function RestaurantsScreen() {
   return (
