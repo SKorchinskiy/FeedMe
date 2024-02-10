@@ -1,4 +1,5 @@
 import React, { useMemo } from "react";
+
 import {
   Image,
   ImageContainer,
@@ -7,64 +8,68 @@ import {
   RestaurantCard,
   RestaurantClosed,
   RestaurantDetails,
-  RestaurantMealSign,
   RestaurantName,
   RestaurantOpen,
   RestaurantMetadata,
   StarRating,
   TemporarilyClosedNote,
   RowWrapper,
+  RestaurantIcon,
 } from "./restaurant-info-card.styles";
+
 import Spacer, {
   directions,
   sizes,
 } from "../../../../components/spacer/spacer.component";
 
-export default function RestaurantInfoCard({ restaurant = {} }) {
+import { Restaurant } from "../../../../entities/restaurant/restaurant.entity";
+
+export default function RestaurantInfoCard({ restaurant = new Restaurant() }) {
   const {
-    restaurant_name,
-    restaurant_icon,
-    restaurant_photos,
-    restaurant_address,
-    isOpen,
-    restaurant_rating,
-    isTemporarilyClosed,
+    restaurantName,
+    restaurantPhotos,
+    restaurandAddress,
+    isRestaurantOpen,
+    restaurantRating,
+    restaurantStatus,
+    restaurantIcon,
   } = restaurant;
 
   const starRatingList = useMemo(
     () =>
-      Array.from(new Array(Math.max(1, Math.round(restaurant_rating)))).map(
-        (_, index) => <StarRating key={index} />
-      ),
-    [restaurant_rating]
+      Array.from(
+        new Array(Math.min(Math.max(1, Math.round(restaurantRating)), 5))
+      ).map((_, index) => <StarRating key={index} />),
+    [restaurantRating]
   );
 
   return (
     <RestaurantCard>
       <ImageContainer>
-        <Image src={restaurant_icon} />
+        <Image src={restaurantPhotos[0]} />
       </ImageContainer>
       <RestaurantDetails>
-        <RestaurantName>{restaurant_name}</RestaurantName>
+        <RestaurantName>{restaurantName}</RestaurantName>
         <RestaurantMetadata>
           <RatingList>{starRatingList}</RatingList>
           <RowWrapper>
             <Spacer>
-              {isTemporarilyClosed ? (
+              {!isRestaurantOpen &&
+              restaurantStatus.toLowerCase().includes("closed") ? (
                 <TemporarilyClosedNote>
-                  CLOSED TEMPORARILY
+                  {restaurantStatus.split("_").join(" ")}
                 </TemporarilyClosedNote>
               ) : null}
             </Spacer>
-            <Spacer direction={directions.left} size={sizes.medium}>
-              {isOpen ? <RestaurantOpen /> : <RestaurantClosed />}
+            <Spacer direction={directions.left} size={sizes.small}>
+              {isRestaurantOpen ? <RestaurantOpen /> : <RestaurantClosed />}
             </Spacer>
-            <Spacer direction={directions.left} size={sizes.medium}>
-              <RestaurantMealSign />
+            <Spacer direction={directions.left} size={sizes.small}>
+              <RestaurantIcon src={restaurantIcon} />
             </Spacer>
           </RowWrapper>
         </RestaurantMetadata>
-        <RestaurantAddress>{restaurant_address}</RestaurantAddress>
+        <RestaurantAddress>{restaurandAddress}</RestaurantAddress>
       </RestaurantDetails>
     </RestaurantCard>
   );

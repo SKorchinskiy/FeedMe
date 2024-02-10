@@ -1,10 +1,5 @@
 import styled from "styled-components/native";
-import {
-  ClosedSign,
-  OpenSign,
-  StarSign,
-  MealSign,
-} from "../../../../../assets/index";
+import { ClosedSign, OpenSign, StarSign } from "../../../../../assets/index";
 
 export const RestaurantCard = styled.View`
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
@@ -83,9 +78,10 @@ export const RestaurantOpen = styled(OpenSign)`
   transform: rotate(10deg);
 `;
 
-export const RestaurantMealSign = styled(MealSign)`
-  width: ${({ theme }) => theme.sizes[1]};
-  height: ${({ theme }) => theme.sizes[1]};
+export const RestaurantIcon = styled.Image`
+  width: ${({ theme }) => theme.iconSizes[1]};
+  height: ${({ theme }) => theme.iconSizes[1]};
+  object-fit: contain;
 `;
 
 export const RowWrapper = styled.View`
