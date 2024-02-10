@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { FlatList } from "react-native";
 import Searchbar from "../searchbar/searchbar.component";
 import RestaurantInfoCard from "../restaurant-info-card/restaurant-info-card.component";
@@ -6,10 +6,11 @@ import {
   RestaurantDataList,
   RestaurantListContainer,
 } from "./restaurant-list.styles";
-import { dummyRestaurantsData } from "./mock.data";
+import { RestaurantContext } from "../../../../providers/restaurants/restaurants.provider";
 
 export default function RestaurantList() {
   const [searchQuery, setSearchQuery] = useState("");
+  const restaurants = useContext(RestaurantContext);
 
   const onSearchQueryChange = (searchInput) => setSearchQuery(searchInput);
 
@@ -21,8 +22,10 @@ export default function RestaurantList() {
       />
       <RestaurantDataList>
         <FlatList
-          data={dummyRestaurantsData.filter((restaurant) =>
-            restaurant.restaurant_name.includes(searchQuery)
+          data={restaurants.filter((restaurant) =>
+            restaurant.restaurantName
+              .toLowerCase()
+              .includes(searchQuery.toLowerCase())
           )}
           renderItem={({ item }) => <RestaurantInfoCard restaurant={item} />}
         />
