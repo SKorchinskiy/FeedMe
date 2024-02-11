@@ -5,6 +5,7 @@ export const SearchBarContainer = styled.View`
   display: flex;
   flex: 0.07;
   padding: ${(props) => props.theme.space[3]};
+  margin-bottom: ${(props) => props.theme.space[3]};
 `;
 
 export const CustomSearchBar = styled(DefaultSearchBar)`
