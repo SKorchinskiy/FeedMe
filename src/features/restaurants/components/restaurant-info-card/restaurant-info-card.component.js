@@ -1,4 +1,5 @@
 import React, { useMemo } from "react";
+import { Pressable } from "react-native";
 
 import {
   Image,
@@ -23,6 +24,7 @@ import Spacer, {
 } from "../../../../components/spacer/spacer.component";
 
 import { Restaurant } from "../../../../entities/restaurant/restaurant.entity";
+import { useNavigation } from "@react-navigation/native";
 
 export default function RestaurantInfoCard({ restaurant = new Restaurant() }) {
   const {
@@ -33,7 +35,10 @@ export default function RestaurantInfoCard({ restaurant = new Restaurant() }) {
     restaurantRating,
     restaurantStatus,
     restaurantIcon,
+    restaurantId,
   } = restaurant;
+
+  const navigation = useNavigation();
 
   const starRatingList = useMemo(
     () =>
@@ -44,33 +49,39 @@ export default function RestaurantInfoCard({ restaurant = new Restaurant() }) {
   );
 
   return (
-    <RestaurantCard>
-      <ImageContainer>
-        <Image src={restaurantPhotos[0]} />
-      </ImageContainer>
-      <RestaurantDetails>
-        <RestaurantName>{restaurantName}</RestaurantName>
-        <RestaurantMetadata>
-          <RatingList>{starRatingList}</RatingList>
-          <RowWrapper>
-            <Spacer>
-              {!isRestaurantOpen &&
-              restaurantStatus.toLowerCase().includes("closed") ? (
-                <TemporarilyClosedNote>
-                  {restaurantStatus.split("_").join(" ")}
-                </TemporarilyClosedNote>
-              ) : null}
-            </Spacer>
-            <Spacer direction={directions.left} size={sizes.small}>
-              {isRestaurantOpen ? <RestaurantOpen /> : <RestaurantClosed />}
-            </Spacer>
-            <Spacer direction={directions.left} size={sizes.small}>
-              <RestaurantIcon src={restaurantIcon} />
-            </Spacer>
-          </RowWrapper>
-        </RestaurantMetadata>
-        <RestaurantAddress>{restaurandAddress}</RestaurantAddress>
-      </RestaurantDetails>
-    </RestaurantCard>
+    <Pressable
+      onPress={() =>
+        navigation.navigate("Restaurant Details", { restaurantId })
+      }
+    >
+      <RestaurantCard>
+        <ImageContainer>
+          <Image src={restaurantPhotos[Math.floor(Math.random() * 5)]} />
+        </ImageContainer>
+        <RestaurantDetails>
+          <RestaurantName>{restaurantName}</RestaurantName>
+          <RestaurantMetadata>
+            <RatingList>{starRatingList}</RatingList>
+            <RowWrapper>
+              <Spacer>
+                {!isRestaurantOpen &&
+                restaurantStatus.toLowerCase().includes("closed") ? (
+                  <TemporarilyClosedNote>
+                    {restaurantStatus.split("_").join(" ")}
+                  </TemporarilyClosedNote>
+                ) : null}
+              </Spacer>
+              <Spacer direction={directions.left} size={sizes.small}>
+                {isRestaurantOpen ? <RestaurantOpen /> : <RestaurantClosed />}
+              </Spacer>
+              <Spacer direction={directions.left} size={sizes.small}>
+                <RestaurantIcon src={restaurantIcon} />
+              </Spacer>
+            </RowWrapper>
+          </RestaurantMetadata>
+          <RestaurantAddress>{restaurandAddress}</RestaurantAddress>
+        </RestaurantDetails>
+      </RestaurantCard>
+    </Pressable>
   );
 }
