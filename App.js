@@ -16,7 +16,8 @@ import { ThemeProvider } from "styled-components";
 import { LocationProvider } from "./src/providers/location/location.provider";
 import { RestaurantsProvider } from "./src/providers/restaurants/restaurants.provider";
 
-import RestaurantsScreen from "./src/features/restaurants/screens/restaurants.screen";
+import Navigation from "./src/infrastructure/navigation/index";
+import { NavigationContainer } from "@react-navigation/native";
 
 export default function App() {
   const [oswaldLoaded] = useOswaldFonts({
@@ -34,7 +35,9 @@ export default function App() {
     <LocationProvider>
       <RestaurantsProvider>
         <ThemeProvider theme={theme}>
-          <RestaurantsScreen />
+          <NavigationContainer>
+            <Navigation />
+          </NavigationContainer>
         </ThemeProvider>
       </RestaurantsProvider>
     </LocationProvider>
