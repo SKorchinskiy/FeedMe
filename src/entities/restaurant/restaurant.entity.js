@@ -1,5 +1,5 @@
 import { restaurantKeyMappings } from "../../utils/mappings/restaurant.mapping";
-
+import { DEFAULT_RESTAURANT_MENU } from "./restaurant.mock";
 export class Restaurant {
   constructor(restaurant) {
     this.restaurantStatus = "";
@@ -18,6 +18,7 @@ export class Restaurant {
     this.restaurantRating = 1;
     this.restaurantTotalRatings = 0;
     this.restaurandAddress = "";
+    this.restaurantMenu = DEFAULT_RESTAURANT_MENU;
 
     this.mapRestaurantData(restaurant);
   }
