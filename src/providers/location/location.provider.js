@@ -12,7 +12,7 @@ export function LocationProvider({ children }) {
 
   const locationChangeHandler = (newLocation) => {
     const coordinates =
-      cityLocation[newLocation.toLowerCase()] || DEFAULT_LOCATION.location;
+      cityLocation[newLocation.toLowerCase()] || currentLocation.location;
     setCurrentLocation({
       location: {
         ...coordinates,
