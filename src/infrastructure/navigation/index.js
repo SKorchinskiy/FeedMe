@@ -1,9 +1,9 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
-import MapScreen from "../../features/map/screens/map.screen";
 import SettingsScreen from "../../features/settings/screens/settings.screen";
 import RestaurantsNavigator from "./restaurants.navigator";
+import MapNavigator from "./map.navigator";
 
 const Tab = createBottomTabNavigator();
 
@@ -25,7 +25,7 @@ export default function Navigation() {
       />
       <Tab.Screen
         name="Map"
-        component={MapScreen}
+        component={MapNavigator}
         options={{
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons
