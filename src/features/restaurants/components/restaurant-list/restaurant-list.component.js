@@ -19,6 +19,7 @@ export default function RestaurantList() {
       <Searchbar
         searchQuery={searchQuery}
         onSearchQueryChange={onSearchQueryChange}
+        placeholder={"Search for restaurants..."}
       />
       <RestaurantDataList>
         <FlatList

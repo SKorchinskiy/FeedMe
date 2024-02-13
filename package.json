@@ -22,7 +22,8 @@
     "react-native": "0.73.2",
     "react-native-paper": "^5.12.3",
     "react-native-svg": "14.1.0",
-    "styled-components": "^6.1.8"
+    "styled-components": "^6.1.8",
+    "react-native-maps": "1.10.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

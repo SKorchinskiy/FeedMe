@@ -5,7 +5,7 @@ import { LocationContext } from "../location/location.provider";
 export const RestaurantContext = createContext([]);
 
 export function RestaurantsProvider({ children }) {
-  const currentLocation = useContext(LocationContext);
+  const { currentLocation } = useContext(LocationContext);
 
   const [restaurants, setRestaurants] = useState([]);
 
@@ -14,7 +14,6 @@ export function RestaurantsProvider({ children }) {
       const restaurantData = await getRestaurantsData({ location });
       setRestaurants(restaurantData);
     };
-
     fetchRestaurantsData(currentLocation);
   }, [currentLocation]);
 

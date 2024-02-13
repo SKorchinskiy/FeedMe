@@ -19,6 +19,22 @@ export class Restaurant {
     this.restaurantTotalRatings = 0;
     this.restaurandAddress = "";
     this.restaurantMenu = DEFAULT_RESTAURANT_MENU;
+    this.restaurantGeometry = {
+      location: {
+        lng: 0,
+        lat: 0,
+      },
+      viewport: {
+        northeast: {
+          lat: 0,
+          lng: 0,
+        },
+        southwest: {
+          lat: 0,
+          lng: 0,
+        },
+      },
+    };
 
     this.mapRestaurantData(restaurant);
   }

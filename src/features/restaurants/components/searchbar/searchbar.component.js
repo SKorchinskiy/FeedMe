@@ -2,11 +2,16 @@ import React from "react";
 import { StyleSheet } from "react-native";
 import { CustomSearchBar, SearchBarContainer } from "./searchbar.styles";
 
-export default function Searchbar({ searchQuery, onSearchQueryChange }) {
+export default function Searchbar({
+  searchQuery,
+  onSearchQueryChange,
+  placeholder,
+}) {
   return (
     <SearchBarContainer>
       <CustomSearchBar
-        placeholder="Search for restaurants..."
+        placeholder={placeholder}
+        placeholderTextColor="#666"
         onChangeText={onSearchQueryChange}
         value={searchQuery}
         mode="view"
