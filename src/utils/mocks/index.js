@@ -10,6 +10,13 @@ export const mocks = {
   "37.7749295,-122.4194155": san_francisco,
 };
 
+export const cityLocation = {
+  antwerp: { lat: 51.219448, lng: 4.402464 },
+  toronto: { lat: 43.653225, lng: -79.383186 },
+  chicago: { lat: 41.878113, lng: -87.629799 },
+  "san francisco": { lat: 37.7749295, lng: -122.4194155 },
+};
+
 export const mockImages = [
   "https://www.foodiesfeed.com/wp-content/uploads/2019/06/top-view-for-box-of-2-burgers-home-made-600x899.jpg",
   "https://www.foodiesfeed.com/wp-content/uploads/2019/04/mae-mu-oranges-ice-600x750.jpg",
