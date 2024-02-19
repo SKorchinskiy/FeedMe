@@ -7,12 +7,17 @@ import {
   RestaurantListContainer,
 } from "./restaurant-list.styles";
 import { RestaurantContext } from "../../../../providers/restaurants/restaurants.provider";
+import FavouritesBar from "../favourites-bar/favourites-bar.component";
 
 export default function RestaurantList() {
-  const [searchQuery, setSearchQuery] = useState("");
   const restaurants = useContext(RestaurantContext);
 
+  const [searchQuery, setSearchQuery] = useState("");
+  const [isFavouritesBarHidden, setIsFavouritesBarHidden] = useState(true);
+
   const onSearchQueryChange = (searchInput) => setSearchQuery(searchInput);
+  const toggleFavouritesBar = () =>
+    setIsFavouritesBarHidden(!isFavouritesBarHidden);
 
   return (
     <RestaurantListContainer>
@@ -20,7 +25,10 @@ export default function RestaurantList() {
         searchQuery={searchQuery}
         onSearchQueryChange={onSearchQueryChange}
         placeholder={"Search for restaurants..."}
+        isFavouritesBarHidden={isFavouritesBarHidden}
+        toggleFavouritesBar={toggleFavouritesBar}
       />
+      {!isFavouritesBarHidden && <FavouritesBar />}
       <RestaurantDataList>
         <FlatList
           data={restaurants.filter((restaurant) =>

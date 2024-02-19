@@ -25,6 +25,7 @@ import Spacer, {
 
 import { Restaurant } from "../../../../entities/restaurant/restaurant.entity";
 import { useNavigation } from "@react-navigation/native";
+import Favourites from "../favourites/favourites.component";
 
 export default function RestaurantInfoCard({ restaurant = new Restaurant() }) {
   const {
@@ -56,6 +57,7 @@ export default function RestaurantInfoCard({ restaurant = new Restaurant() }) {
     >
       <RestaurantCard>
         <ImageContainer>
+          <Favourites restaurantId={restaurant.restaurantId} />
           <Image src={restaurantPhotos[Math.floor(Math.random() * 5)]} />
         </ImageContainer>
         <RestaurantDetails>

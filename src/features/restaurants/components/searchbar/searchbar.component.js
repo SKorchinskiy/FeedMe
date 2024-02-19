@@ -6,6 +6,8 @@ export default function Searchbar({
   searchQuery,
   onSearchQueryChange,
   placeholder,
+  isFavouritesBarHidden,
+  toggleFavouritesBar,
 }) {
   return (
     <SearchBarContainer>
@@ -17,6 +19,8 @@ export default function Searchbar({
         mode="view"
         inputStyle={styles.searchBarInput}
         showDivider={false}
+        icon={isFavouritesBarHidden ? "heart-outline" : "heart"}
+        onIconPress={toggleFavouritesBar}
       />
     </SearchBarContainer>
   );

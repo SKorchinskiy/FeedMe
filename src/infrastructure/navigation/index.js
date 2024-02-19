@@ -11,7 +11,7 @@ export default function Navigation() {
   return (
     <Tab.Navigator screenOptions={{ headerShown: false }}>
       <Tab.Screen
-        name="Restaurants"
+        name="Restaurants Navigator"
         component={RestaurantsNavigator}
         options={{
           tabBarIcon: ({ color, size }) => (
@@ -24,7 +24,7 @@ export default function Navigation() {
         }}
       />
       <Tab.Screen
-        name="Map"
+        name="Map Navigator"
         component={MapNavigator}
         options={{
           tabBarIcon: ({ color, size }) => (

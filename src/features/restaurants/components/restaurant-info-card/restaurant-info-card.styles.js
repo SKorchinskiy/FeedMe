@@ -4,6 +4,7 @@ import { ClosedSign, OpenSign, StarSign } from "../../../../../assets/index";
 export const RestaurantCard = styled.View`
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
   margin: ${(props) => props.theme.space[2]};
+  min-width: ${(props) => props.theme.sizes[5]};
   height: ${(props) => props.theme.sizes[5]};
   padding: ${(props) => props.theme.sizes[0]};
   border-radius: ${(props) => props.theme.sizes[0]};
