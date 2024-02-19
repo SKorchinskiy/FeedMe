@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Text, View, Dimensions } from "react-native";
+import { View } from "react-native";
 import MapView, { Callout, Marker } from "react-native-maps";
 import Searchbar from "../../restaurants/components/searchbar/searchbar.component";
 import styled from "styled-components";
@@ -18,9 +18,6 @@ export default function MapScreen({ navigation }) {
   const { currentLocation, locationChangeHandler } =
     useContext(LocationContext);
   const restaurantsData = useContext(RestaurantContext);
-
-  const { width, height } = Dimensions.get("window");
-  const ratio = width / height;
 
   const [targetCity, setTargetCity] = useState("San Francisco");
 
