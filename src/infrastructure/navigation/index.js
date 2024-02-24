@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import AppNavigator from "./app.navigator";
 import AuthNavigator from "./auth.navigator";
+import { UserContext } from "../../providers/user/user.provider";
 
 export default function Navigation() {
-  const [isAuthenticated, setIsAuthenticated] = useState(true);
+  const { user } = useContext(UserContext);
 
-  return isAuthenticated ? <AppNavigator /> : <AuthNavigator />;
+  return !!user ? <AppNavigator /> : <AuthNavigator />;
 }
