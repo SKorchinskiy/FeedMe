@@ -13,6 +13,7 @@ import {
 import { theme } from "./src/infrastructure/theme/index";
 import { ThemeProvider } from "styled-components";
 
+import { UserProvider } from "./src/providers/user/user.provider";
 import { LocationProvider } from "./src/providers/location/location.provider";
 import { FavouritesProvider } from "./src/providers/favourites/favourites.provider";
 import { RestaurantsProvider } from "./src/providers/restaurants/restaurants.provider";
@@ -33,16 +34,18 @@ export default function App() {
   }
 
   return (
-    <FavouritesProvider>
-      <LocationProvider>
-        <RestaurantsProvider>
-          <ThemeProvider theme={theme}>
-            <NavigationContainer>
-              <Navigation />
-            </NavigationContainer>
-          </ThemeProvider>
-        </RestaurantsProvider>
-      </LocationProvider>
-    </FavouritesProvider>
+    <UserProvider>
+      <FavouritesProvider>
+        <LocationProvider>
+          <RestaurantsProvider>
+            <ThemeProvider theme={theme}>
+              <NavigationContainer>
+                <Navigation />
+              </NavigationContainer>
+            </ThemeProvider>
+          </RestaurantsProvider>
+        </LocationProvider>
+      </FavouritesProvider>
+    </UserProvider>
   );
 }
