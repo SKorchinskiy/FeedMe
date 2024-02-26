@@ -5,8 +5,7 @@ import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
 } from "@firebase/auth";
-import { getApp } from "@firebase/app";
-import { app, auth } from "../../services/firebase.service";
+import { auth } from "../../services/firebase.service";
 
 const DEFAULT_VALUE = {
   user: null,
